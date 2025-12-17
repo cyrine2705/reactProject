@@ -34,8 +34,6 @@ export const PostProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const addNewPost = async (postInput: PostInput) => {
         try {
             const newPost = await apiAddPost(postInput);
-            // JSONPlaceholder returns id 101 for all new posts, which causes key conflicts.
-            // We'll generate a random ID for local state to avoid UI bugs
             const localPost = { ...newPost, id: Math.floor(Math.random() * 10000) + 100 };
             setPosts(prev => [localPost, ...prev]);
         } catch (error) {
