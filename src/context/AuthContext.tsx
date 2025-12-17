@@ -14,7 +14,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     );
 
     const login = (password: string) => {
-        // Simple mock authentication
         if (password === 'admin123') {
             setIsAuthenticated(true);
             localStorage.setItem('isAuthenticated', 'true');

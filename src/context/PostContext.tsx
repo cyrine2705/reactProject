@@ -46,12 +46,10 @@ export const PostProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
     const updatePost = async (id: number | string, postInput: PostInput) => {
         try {
-            // Only call API if ID is likely from the server (<= 100)
-            // JSONPlaceholder has 100 posts. Local posts have IDs > 100.
+
             if (typeof id === 'number' && id <= 100) {
                 await apiEditPost(id, postInput);
             }
-            // Always update local state
             setPosts(prev => prev.map(p => p.id == id ? { ...p, ...postInput } : p));
         } catch (error) {
             console.error("Error updating post:", error);
@@ -61,7 +59,6 @@ export const PostProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
     const removePost = async (id: number | string) => {
         try {
-            // Only call API if ID is likely from the server (<= 100)
             if (typeof id === 'number' && id <= 100) {
                 await apiDeletePost(id);
             }

@@ -10,7 +10,7 @@ const PostDetails: React.FC = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        if (contextLoading) return; // Wait for context to load
+        if (contextLoading) return;
 
         if (id) {
             const foundPost = getPostById(Number(id));
